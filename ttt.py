@@ -1,46 +1,50 @@
 # ttt.py
 """
-1.4 문자열
+1.5 리스트
+기호: []
+어떤 타입이든 리스트 항목(item)이 될 수 있다.
+리스트의 항목을 변경할 수 있다.
+리스트에는 중복된 값이 들어가도 전혀 문제가 없다.
 
 """
 
 """
-***문자열 이스케이프 코드(escape code)***
-'\n'      라인 피드(Line feed)
-'\r'      캐리지 리턴(Carriage return)
-'\t'      탭(Tab)
-'\''      작은따옴표(Literal single quote)
-'\"'      큰따옴표(Literal double quote)
-'\\'      백슬래시(Literal backslash)
+1.6 파일 관리
+파일을 연다.
+f = open('foo.txt', 'rt')     # 읽기를 위해 열기(텍스트)
+g = open('bar.txt', 'wt')     # 쓰기를 위해 열기(텍스트)
+
+모든 데이터를 읽는다.
+data = f.read()
+
+텍스트를 기록한다.
+g.write('some text')
+
+마쳤으면 파일을 닫는다.
+f.close()
 """
 
 """
-***문자열 메서드***
-s.endswith(suffix)     # 문자열이 suffix로 끝나는지 확인
-s.find(t)              # s에서 t가 처음 나타나는 곳
-s.index(t)             # s에서 t가 처음 나타나는 곳
-s.isalpha()            # 문자가 영문자인지 여부
-s.isdigit()            # 문자가 숫자인지 여부
-s.islower()            # 문자가 소문자인지 여부
-s.isupper()            # 문자가 대문자인지 여부
-s.join(slist)          # s를 구분자(delimiter)로 삼아 문자열의 리스트를 붙이기(join)
-s.lower()              # 소문자로 변환
-s.replace(old,new)     # 텍스트 교체
-s.rfind(t)             # 문자열의 끝에서부터 t를 검색
-s.rindex(t)            # 문자열의 끝에서부터 t를 검색
-s.split([구분자])       # 문자열을 분할해 부분 문자열의 리스트를 만듦
-s.startswith(prefix)   # 문자열이 prefix로 시작하는지 확인
-s.strip()              # 앞뒤의 공백을 제거
-s.upper()              # 대문자로 변환
-"""
+***파일 데이터를 읽는 일반적인 방법***
+파일 전체를 한번에 읽어 문자열로 처리한다.
+with open('foo.txt', 'rt') as file:
+    data = file.read()
+    # `data`는 `foo.txt`의 텍스트 전체로 된 문자열이다
+    
+파일을 한 행씩 읽어 내려가기.
+with open(filename, 'rt') as file:
+    for line in file:
+        # 행을 처리
 
-"""
-***원시 문자열(Raw String)***
-원시 문자열은 백슬래시를 해석하지 않는 문자열 리터럴이다. 소문자 "r"을 앞에 붙여 원시 문자열임을 나타낸다.
-rs = r'c:\newdata\test' # 원시(백슬래시를 해석하지 않음)
-"""
 
-"""
-***f 문자열(f-String)***
-a = f'{name:>10s} {shares:10d} {price:10.2f}'
+***파일에 쓰는 일반적인 방법***
+1. 문자열 데이터를 기록한다.
+with open('outfile', 'wt') as out:
+    out.write('Hello World\n')
+    ...
+    
+2. print 함수의 출력을 재지정(redirect)한다.
+with open('outfile', 'wt') as out:
+    print('Hello World', file=out)
+    ...
 """
