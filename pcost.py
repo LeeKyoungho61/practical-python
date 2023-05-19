@@ -27,3 +27,4 @@ with open('data/portfolio.csv', 'rt') as f:
         total_cost = total_cost + cost
 
     print(f'Total cost {total_cost}')
+
